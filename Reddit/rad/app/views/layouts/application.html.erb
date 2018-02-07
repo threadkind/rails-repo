@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rad</title>
+    <title>Links Page</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
+    
 
-  	<% flash.each do |name, msg| %>
-  	  <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-  	<% end %>
 
+    <%= link_to "Home", root_path %>
+    <div id="menubar">
   	<% if user_signed_in? %>
-  		<ul>
-  			<li><%= link_to "Submit Link", new_link_path %></li>
+  		<ul class="menu">
+        <li><%= link_to "Submit Link", new_link_path %></li>
   			<li><%= link_to "Account", edit_user_registration_path %></li>
   			<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
   		</ul>
   	<% else %>
-  	  		<ul>
+  	  		<ul class="menu">
   			<li><%= link_to "Sign Up", new_user_registration_path %></li>
   			<li><%= link_to "Sign In", new_user_session_path %></li>
   		</ul>
-
   	<% end %>
+  </div>
 
+
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+    <% end %>
 
     <%= yield %>
   </body>

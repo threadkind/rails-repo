@@ -2,7 +2,7 @@
 
 <h1>Links</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -10,23 +10,21 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
-  <tbody>
+ -->
+  <!-- tbody -->
     <% @links.each do |link| %>
-      <tr>
-        <td><%= link.title %></td>
-        <td><%= link.url %></td>
-        <td><%= link_to 'Show', link %></td>
+      <ul>
+        <li class="links">
+        <span class="title"><%= link.title %></span>
+        <span class="url"><%= link.url %></span>
+        <span class="actions"><%= link_to 'Show', link %></span>
         
         <% if link.user == current_user %>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <span class="action"><%= link_to image_tag("edit.png"), edit_link_path(link) %></span>
+        <span class="action"><%= link_to image_tag("trash.png"), link, method: :delete, data: { confirm: 'Are you sure?' } %></span>
         <% end %>
-      </tr>
+      </li>
+      </ul>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Link', new_link_path %>
+<!--   </tbody>
+</table> -->
